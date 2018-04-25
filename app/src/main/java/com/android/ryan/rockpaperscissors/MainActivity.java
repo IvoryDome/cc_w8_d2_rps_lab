@@ -10,6 +10,7 @@ public class MainActivity extends AppCompatActivity {
 
     private RPSGame game;
     private TextView resultTextViewID;
+    private TextView scoreTextViewID;
     private Button rockButtonID;
     private Button paperButtonID;
     private Button scissorsButtonID;
@@ -23,28 +24,33 @@ public class MainActivity extends AppCompatActivity {
         rockButtonID = findViewById(R.id.rockButtonID);
         paperButtonID = findViewById(R.id.paperButtonID);
         scissorsButtonID = findViewById(R.id.scissorsButtonID);
+        scoreTextViewID = findViewById(R.id.scoreTextViewID);
+        game = new RPSGame();
     }
 
 
     public void onRockButtonPressed(View button){
-        game = new RPSGame();
         String playerHand = "Rock";
-        String computerHand = game.generateComputerHand();
-        resultTextViewID.setText(game.play(playerHand, computerHand));
+        play(playerHand);
+        scoreTextViewID.setText("Score: You - " + game.playerScore + ", CPU - " + game.computerScore);
     }
 
     public void onPaperButtonPressed(View button){
-        game = new RPSGame();
         String playerHand = "Paper";
-        String computerHand = game.generateComputerHand();
-        resultTextViewID.setText(game.play(playerHand, computerHand));
+        play(playerHand);
+        scoreTextViewID.setText("Score: You - " + game.playerScore + ", CPU - " + game.computerScore);
     }
 
     public void onScissorsButtonPressed(View button){
-        game = new RPSGame();
         String playerHand = "Scissors";
+        play(playerHand);
+        scoreTextViewID.setText("Score: You - " + game.playerScore + ", CPU - " + game.computerScore);
+    }
+
+    public void play(String plyrhnd){
         String computerHand = game.generateComputerHand();
-        resultTextViewID.setText(game.play(playerHand, computerHand));
+        resultTextViewID.setText(game.play(plyrhnd, computerHand));
+        scoreTextViewID.setText("Score: You - " + game.playerScore + ", CPU - " + game.computerScore);
     }
 
 
